@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>TestScore</title>
+
+<script src="javascript/score.js"></script>
+<script>
+let score = new Score();
+
+testIncreaseWins = function() {
+	score.increaseWins();
+	document.getElementById('wins').innerHTML = score.wins; 
+}
+testIncreaseLosses = function() {
+	score.increaseWins();
+	document.getElementById('losses').innerHTML = score.wins; 
+}
+
+testIncreaseTies = function() {
+	score.increaseTies();
+	document.getElementById('ties').innerHTML = score.wins; 
+}
+
+</script>
+
+																																																			<html>
+</head>
+
+   <body>
+
+      Wins:   <button id="wins"    onclick="testIncreaseWins()"> 0 </button><br/>
+	  Losses: <button id="losses"  onclick="testIncreaseWins()"> 0 </button><br/>
+	  Ties:   <button id="ties"    onclick="testIncreaseTies()"> 0 </button><br/>
+
+   </body>
+</html>
+

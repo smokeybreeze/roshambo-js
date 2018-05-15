@@ -1,0 +1,70 @@
+<html>
+<head>
+<script src="results/cwm-result.js"></script>
+<script src="javascript/score.js"></script>
+<script src="javascript/gamesummary.js"></script>
+<script src="javascript/gameservice.js"></script>
+<title>Rock Pepper Scissors!!!</title>																																																						<html>
+</head>
+
+   <body>
+
+      Which one will it be?<br/>
+      <a href="#" onclick="playRoshambo('rock')"> rock </a>
+      <a href="#" onclick="playRoshambo('paper')"> paper </a>
+      <a href="#" onclick="playRoshambo('scissors')"> scissors </a>
+
+      <br/><br/>
+      <div id="results">Make your choice!!!</div>
+	  <br/>
+	  
+	  <table>
+	  <tr><th>WINS</th><th>LOSSES</th><th>TIES</th></tr>
+	  <tr>
+	  <td><div id="wins">0</div></td>
+	  <td><div id="ties">0</div></td>
+	  <td><div id="losses">0</div></td></tr>
+	  </table>
+	  
+	  <br/>
+	  <div id="history"></div>
+	  
+   </body>
+</html>
+
+<script>
+playRoshambo = function(clientGesture) {
+	console.log("************** Playing Roshambo *****************");
+   let gameService = new GameService();
+   let gameSummary = gameService.playGame(clientGesture);
+   let theScore = gameService.getScore();
+   console.log("Here is the returned gs: " + gameSummary + " :---:");
+   document.getElementById('results').innerHTML = gameSummary.result; 
+   document.getElementById('wins').innerHTML = theScore.wins; 
+   document.getElementById('losses').innerHTML = theScore.losses; 
+   document.getElementById('ties').innerHTML = theScore.ties; 
+   
+   renderGameHistory(gameService.getGameHistory());
+}
+renderGameHistory = function(gameHistory){
+	console.log("************** RENDERING GAME HISTORY *****************");
+	let output = "<table><tr><th>Client</th><th>Server</th><th>Result</th><th>Date</th></tr>";
+	for (let i=0; i < gameHistory.length; i++){
+		let gameSummary = gameHistory[i];
+		let date = gameSummary.date;
+		let simpleDate = date.getHours()+ ":" + date.getMinutes() + "." + date.getSeconds();
+
+		console.log(gameSummary);
+		output = output + " <tr>";
+		output = output + " <td> " + gameSummary.clientGesture + " </td> ";
+		output = output + " <td> " + gameSummary.serverGesture  + " </td> ";
+		output = output + " <td> " + gameSummary.result + " </td> ";
+
+		output = output + " <td> " + simpleDate + " </td> ";
+		output = output + " </tr>";
+		console.log(output);
+	}
+	output = output + "</table>";
+	document.getElementById('history').innerHTML = output; 
+}
+</script>

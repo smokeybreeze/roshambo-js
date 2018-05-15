@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>TestGameService</title>
+
+<script src="results/result.js"></script>
+<script src="javascript/score.js"></script>
+<script src="javascript/gamesummary.js"></script>
+<script src="javascript/gameservice.js"></script>
+
+<script>
+
+let gameService = new GameService();
+testGameService = function() {
+	let clientGesture = document.getElementById('client').value; 
+	gameService.playGame(clientGesture);
+	gameService.printGameHistory();
+	document.getElementById('ties').innerHTML = gameService.printGameHistory(); 
+}
+
+</script>
+
+																																																			<html>
+</head>
+
+   <body>
+   
+      Rock Paper or Scissors?   <input id="client" value="rock"></input><br/>
+
+	  <button onclick="testGameService()"> Test </button>
+	  <br/><br/>
+	  <div id="history"></div>
+
+   </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>TestGameSummary</title>
+
+<script src="javascript/gamesummary.js"></script>
+<script>
+
+
+testGameSummary = function() {
+	let client = document.getElementById('client').value; 
+	let server = document.getElementById('server').value; 
+	let result = document.getElementById('result').value; 
+	let gameSummary = new GameSummary(client, server, result);
+	console.log(gameSummary);
+	
+	document.getElementById('gamesummaryoutput').innerHTML = gameSummary.toString();
+
+}
+
+
+</script>
+
+																																																			<html>
+</head>
+
+   <body>
+   
+      Client:   <input id="client" ></input><br/>
+	  Server: <input id="server"  ></input><br/>
+	  Result:   <input id="result" ></input><br/>
+	  <button onclick="testGameSummary()"> Test </button>
+	  <br/><br/>
+	  <div id="gamesummaryoutput"></div>
+
+   </body>
+</html>
